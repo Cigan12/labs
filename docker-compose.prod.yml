@@ -1,0 +1,25 @@
+version: "3.3"
+services:
+    back:
+        build:
+            context: ./backend
+            dockerfile: Dockerfile.prod
+        container_name: study-backend
+        environment:
+            - isDocker=true
+            - NODE_ENV=production
+        restart: always
+        ports:
+            - "3001:3001"
+        command: yarn start:prod
+    front:
+        build:
+            context: ./frontend
+            dockerfile: Dockerfile.prod
+        container_name: study-frontend
+        environment:
+            - NODE_ENV=production
+        restart: always
+        ports:
+            - "3000:3000"
+        command: serve build -p 3000

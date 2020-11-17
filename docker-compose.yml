@@ -1,0 +1,26 @@
+version: "3.3"
+services:
+    back:
+        build:
+            context: ./backend
+            dockerfile: Dockerfile
+        container_name: study-backend
+        environment:
+            - isDocker=true
+        restart: always
+        ports:
+            - "3001:3001"
+        volumes:
+            - ./backend:/study-back
+            - /study-back/node_modules/
+    front:
+        build:
+            context: ./frontend
+            dockerfile: Dockerfile
+        container_name: study-frontend
+        restart: always
+        ports:
+            - "3000:3000"
+        volumes:
+            - ./frontend:/study-front
+            - /study-front/node_modules
