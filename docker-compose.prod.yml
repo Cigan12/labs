@@ -5,6 +5,8 @@ services:
             context: ./backend
             dockerfile: Dockerfile.prod
         container_name: study-backend
+        security_opt:
+            - apparmor:unconfined
         environment:
             - isDocker=true
             - NODE_ENV=production
@@ -17,6 +19,8 @@ services:
             context: ./frontend
             dockerfile: Dockerfile.prod
         container_name: study-frontend
+        security_opt:
+            - apparmor:unconfined
         environment:
             - NODE_ENV=production
         restart: always
