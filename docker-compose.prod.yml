@@ -26,4 +26,4 @@ services:
         restart: always
         ports:
             - "3000:3000"
-        command: serve build -p 3000
+        command: serve -s build -p 3000
