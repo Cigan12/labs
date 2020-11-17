@@ -12,7 +12,7 @@ services:
             - NODE_ENV=production
         restart: always
         ports:
-            - "3001:3001"
+            - "3002:3001"
         command: yarn start:prod
     front:
         build:
