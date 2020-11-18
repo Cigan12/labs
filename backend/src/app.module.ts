@@ -5,6 +5,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { Laba1Module } from './laba1/laba1.module';
 import { Laba2Module } from './laba2/laba2.module';
+import { Laba3Module } from './laba3/laba3.module';
 
 @Module({
     imports: [
@@ -13,6 +14,7 @@ import { Laba2Module } from './laba2/laba2.module';
             rootPath: join(__dirname, '..', 'static'),
         }),
         Laba2Module,
+        Laba3Module,
     ],
     controllers: [AppController],
     providers: [AppService],

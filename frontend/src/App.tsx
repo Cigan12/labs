@@ -4,6 +4,7 @@ import { Laba1 } from "./pages/Laba1/Laba1";
 import { Login } from "./pages/Laba1/Login";
 import { Registration } from "./pages/Laba1/Registration";
 import { Laba2 } from "./pages/Laba2";
+import { Laba3 } from "./pages/Laba3";
 import { Nav } from "./pages/Nav";
 
 export interface IAppProps {}
@@ -26,6 +27,9 @@ export const App: React.FC<IAppProps> = () => {
                 </Route>
                 <Route path="/Laba2" exact>
                     <Laba2 />
+                </Route>
+                <Route path="/Laba3">
+                    <Laba3 />
                 </Route>
             </Switch>
         </Router>
