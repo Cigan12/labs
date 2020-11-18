@@ -265,8 +265,8 @@ export const Laba1: React.FC<ILaba1Props> = () => {
 
             <h6>
                 Содержимое файла{" "}
-                <a href="http://localhost:3001/testfile">
-                    http://localhost:3001/testfile
+                <a href="https://api.olya-get-well.ru//testfile">
+                    https://api.olya-get-well.ru//testfile
                 </a>
             </h6>
             <div>{file}</div>
