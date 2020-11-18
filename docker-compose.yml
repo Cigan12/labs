@@ -17,10 +17,13 @@ services:
         build:
             context: ./frontend
             dockerfile: Dockerfile
-        container_name: study-frontend
         restart: always
         ports:
             - "3000:3000"
+        depends_on:
+            - back
+        environment:
+            - CHOKIDAR_USEPOLLING=true
         volumes:
             - ./frontend:/study-front
             - /study-front/node_modules
