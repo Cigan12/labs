@@ -1,3 +1,5 @@
+import { editFileName } from './file.filter';
+import { diskStorage } from 'multer';
 import {
     Controller,
     Get,
@@ -22,10 +24,17 @@ export class Laba9Controller {
     }
 
     @Post('data')
-    @UseInterceptors(FilesInterceptor('files', 10))
+    @UseInterceptors(
+        FilesInterceptor('files', 10, {
+            storage: diskStorage({
+                destination: '/static',
+                filename: editFileName,
+            }),
+        }),
+    )
     returnData(@UploadedFiles() files) {
         return files.map(item => ({
-            name: item.originalName,
+            name: item.originalname,
             type: item.mimetype,
             size: item.size,
         }));
