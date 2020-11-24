@@ -15,6 +15,12 @@ export const Laba12: React.FC<ILaba12Props> = () => {
         password: "",
     });
 
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    React.useEffect(() => {
+        if (localStorage.getItem("token")) setIsLoggedIn(true);
+    }, []);
+
     const signUp = async () => {
         try {
             const r = await API.post("laba12/signup", signUpform);
@@ -32,6 +38,8 @@ export const Laba12: React.FC<ILaba12Props> = () => {
             if (r.data.result) {
                 localStorage.setItem("token", r.data.token);
                 localStorage.setItem("login", signInForm.login);
+                alert("Success");
+                setIsLoggedIn(true);
             } else {
                 alert("something went wrong");
             }
@@ -40,10 +48,16 @@ export const Laba12: React.FC<ILaba12Props> = () => {
         }
     };
 
+    const logout = () => {
+        localStorage.setItem("token", "");
+        setIsLoggedIn(false);
+    };
+
     return (
         <div>
             <Link to="/">Home</Link>
             <h4>Sign UP</h4>
+            {!isLoggedIn || <p>Hello, {localStorage.getItem("login")}</p>}
             <form
                 onSubmit={(e) => {
                     e.preventDefault();
@@ -74,7 +88,7 @@ export const Laba12: React.FC<ILaba12Props> = () => {
 
             <h4>Sign In</h4>
 
-            {!!localStorage.getItem("token") || (
+            {isLoggedIn || (
                 <form
                     onSubmit={(e) => {
                         e.preventDefault();
@@ -106,6 +120,7 @@ export const Laba12: React.FC<ILaba12Props> = () => {
                     <button type="submit">signIn</button>
                 </form>
             )}
+            {!isLoggedIn || <button onClick={() => logout()}>logout</button>}
         </div>
     );
 };
