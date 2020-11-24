@@ -1,8 +1,10 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Laba1 } from "./pages/Laba1/Laba1";
 import { Login } from "./pages/Laba1/Login";
 import { Registration } from "./pages/Laba1/Registration";
+import { SessionInfo } from "./pages/Laba10/SessionInfo";
 import { Laba2 } from "./pages/Laba2";
 import { Laba3 } from "./pages/Laba3";
 import { Laba4 } from "./pages/Laba4";
@@ -12,10 +14,15 @@ import { Laba7 } from "./pages/Laba7";
 import { Laba8 } from "./pages/Laba8";
 import { Laba9 } from "./pages/Laba9";
 import { Nav } from "./pages/Nav";
+import { IStoreState } from "./store";
 
 export interface IAppProps {}
 
 export const App: React.FC<IAppProps> = () => {
+    const state = useSelector(
+        (state: IStoreState) => state.default.Laba10Reducer
+    );
+    console.log("Cigan-log: state", state);
     return (
         <Router>
             <Switch>
@@ -54,6 +61,9 @@ export const App: React.FC<IAppProps> = () => {
                 </Route>
                 <Route path="/Laba9">
                     <Laba9 />
+                </Route>
+                <Route path="/Laba10">
+                    <SessionInfo />
                 </Route>
             </Switch>
         </Router>

@@ -12,6 +12,7 @@ import { Laba6Module } from './laba6/laba6.module';
 import { Laba7Module } from './laba7/laba7.module';
 import { Laba8Module } from './laba8/laba8.module';
 import { Laba9Module } from './laba9/laba9.module';
+import { Laba10Module } from './laba10/laba10.module';
 
 @Module({
     imports: [
@@ -27,6 +28,7 @@ import { Laba9Module } from './laba9/laba9.module';
         Laba7Module,
         Laba8Module,
         Laba9Module,
+        Laba10Module,
     ],
     controllers: [AppController],
     providers: [AppService],
