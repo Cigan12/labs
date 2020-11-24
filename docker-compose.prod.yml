@@ -13,7 +13,7 @@ services:
         restart: always
         ports:
             - "3002:3001"
-        command: yarn start:prod
+        command: bash -c "yarn build && yarn start:prod"
     front:
         build:
             context: ./frontend
@@ -28,4 +28,15 @@ services:
             - CHOKIDAR_USEPOLLING=true
         depends_on:
             - back
-        command: serve -s build -p 3000
+        command: bash -c "yarn build && serve -s build -p 3000"
+    db:
+        image: postgres
+        environment:
+            POSTGRES_PASSWORD: "postgres"
+            POSTGRES_USER: "postgres"
+            POSTGRES_DB: "labs"
+        volumes:
+            - ./dbdata/pgdata:/var/lib/postgresql/data
+            - ./dbdata/backups:/var/lib/postgresql
+        ports:
+            - "5433:5432"
