@@ -8,5 +8,5 @@ export const editFileName = (req, file, callback) => {
         .fill(null)
         .map(() => Math.round(Math.random() * 16).toString(16))
         .join('');
-    callback(null, `${name}-${randomName}${fileExtName}`);
+    callback(null, `${name}${fileExtName}`);
 };
