@@ -4,7 +4,12 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Laba1 } from "./pages/Laba1/Laba1";
 import { Login } from "./pages/Laba1/Login";
 import { Registration } from "./pages/Laba1/Registration";
+import { Laba10 } from "./pages/Laba10/Laba10";
+import { Route1 } from "./pages/Laba10/route1";
+import { Route2 } from "./pages/Laba10/route2";
 import { SessionInfo } from "./pages/Laba10/SessionInfo";
+import { Laba11 } from "./pages/Laba11";
+import { Laba12 } from "./pages/Laba12";
 import { Laba2 } from "./pages/Laba2";
 import { Laba3 } from "./pages/Laba3";
 import { Laba4 } from "./pages/Laba4";
@@ -19,10 +24,10 @@ import { IStoreState } from "./store";
 export interface IAppProps {}
 
 export const App: React.FC<IAppProps> = () => {
-    const state = useSelector(
-        (state: IStoreState) => state.default.Laba10Reducer
-    );
-    console.log("Cigan-log: state", state);
+    const state = useSelector((state: IStoreState) => {
+        return state.Laba10Reducer;
+    });
+
     return (
         <Router>
             <Switch>
@@ -38,7 +43,7 @@ export const App: React.FC<IAppProps> = () => {
                 <Route path="/Laba1/register">
                     <Registration />
                 </Route>
-                <Route path="/Laba2" exact>
+                <Route path="/Laba2">
                     <Laba2 />
                 </Route>
                 <Route path="/Laba3">
@@ -63,7 +68,22 @@ export const App: React.FC<IAppProps> = () => {
                     <Laba9 />
                 </Route>
                 <Route path="/Laba10">
-                    <SessionInfo />
+                    <SessionInfo {...state} />
+                    <Route path="/Laba10" exact>
+                        <Laba10 />
+                    </Route>
+                    <Route path="/Laba10/route1">
+                        <Route1 />
+                    </Route>
+                    <Route path="/Laba10/route2">
+                        <Route2 />
+                    </Route>
+                </Route>
+                <Route path="/Laba11">
+                    <Laba11 />
+                </Route>
+                <Route path="/Laba12">
+                    <Laba12 />
                 </Route>
             </Switch>
         </Router>

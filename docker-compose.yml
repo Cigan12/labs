@@ -13,6 +13,9 @@ services:
         volumes:
             - ./backend:/study-back
             - /study-back/node_modules/
+        depends_on:
+            - db
+        command: bash -c 'yarn install && yarn start:dev'
     front:
         build:
             context: ./frontend
@@ -27,3 +30,15 @@ services:
         volumes:
             - ./frontend:/study-front
             - /study-front/node_modules
+        command: bash -c 'yarn install && yarn start'
+    db:
+        image: postgres
+        environment:
+            POSTGRES_PASSWORD: "postgres"
+            POSTGRES_USER: "postgres"
+            POSTGRES_DB: "labs"
+        volumes:
+            - ./dbdata/pgdata:/var/lib/postgresql/data
+            - ./dbdata/backups:/var/lib/postgresql
+        ports:
+            - "5433:5432"

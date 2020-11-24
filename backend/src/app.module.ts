@@ -13,6 +13,10 @@ import { Laba7Module } from './laba7/laba7.module';
 import { Laba8Module } from './laba8/laba8.module';
 import { Laba9Module } from './laba9/laba9.module';
 import { Laba10Module } from './laba10/laba10.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { typeOrmConfig } from './config/typeorm.config';
+import { Laba11Module } from './laba11/laba11.module';
+import { Laba12Module } from './laba12/laba12.module';
 
 @Module({
     imports: [
@@ -29,6 +33,9 @@ import { Laba10Module } from './laba10/laba10.module';
         Laba8Module,
         Laba9Module,
         Laba10Module,
+        TypeOrmModule.forRoot(typeOrmConfig),
+        Laba11Module,
+        Laba12Module,
     ],
     controllers: [AppController],
     providers: [AppService],

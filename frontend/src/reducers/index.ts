@@ -9,8 +9,8 @@ const initialAppState: ISessionInfoProps = {
 export const Laba10Reducer = (state = initialAppState, action: any) => {
     const { type, payload } = action;
     switch (type) {
-        case "HOTEL_MODIFY":
-            return { ...state, hotelType: payload.type };
+        case "DATA-CHANGED":
+            return { ...payload };
 
         default:
             return state;
