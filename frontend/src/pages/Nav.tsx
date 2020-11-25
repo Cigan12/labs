@@ -42,7 +42,7 @@ export const Nav: React.FC<INavProps> = () => {
             <li>
                 <Link to="/Laba12">Laba 12</Link>
             </li>
-            <li>
+            {/* <li>
                 <Link to="/Laba13">Laba 13</Link>
             </li>
             <li>
@@ -68,7 +68,7 @@ export const Nav: React.FC<INavProps> = () => {
             </li>
             <li>
                 <Link to="/Laba21">Laba 21</Link>
-            </li>
+            </li> */}
         </ul>
     );
 };

@@ -147,7 +147,6 @@ export const Laba7: React.FC<Ilaba7Props> = () => {
                         </li>
                     ))}
             </ul>
-            <pre>Не ясно какой именно скрипт нужен для данной головоломки</pre>
         </div>
     );
 };
